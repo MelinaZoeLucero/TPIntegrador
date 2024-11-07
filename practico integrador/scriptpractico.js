@@ -41,35 +41,46 @@ function validateForm() {
     const phone = document.getElementById('phone').value.trim();
     const message = document.getElementById('message').value.trim();
 
+    document.getElementById('name-error').textContent = '';
+    document.getElementById('email-error').textContent = '';
+    document.getElementById('phone-error').textContent = '';
+    document.getElementById('message-error').textContent = ''; 
+
+    let isValid = true;
+
     if (name === '' || name.length > 50) {
-        alert('El nombre es obligatorio y debe tener menos de 50 caracteres.');
-        return false;
+        document.getElementById('name-error').textContent = 'El nombre es obligatorio y debe tener menos de 50 caracteres.';
+        isValid = false;
     }
 
     const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!emailPattern.test(email)) {
-        alert('Por favor, introduce un correo electrónico válido.');
-        return false;
+        document.getElementById('email-error').textContent = 'Por favor, introduce un correo electrónico válido.';
+        isValid = false;
     }
 
     const phonePattern = /^[0-9]{10}$/;
     if (!phonePattern.test(phone)) {
-        alert('El número de teléfono debe tener exactamente 10 dígitos.');
-        return false;
+        document.getElementById('phone-error').textContent = 'El número de teléfono debe tener exactamente 10 dígitos.';
+        isValid = false;
     }
 
-    if (message === '' || message.length > 300) {
-        alert('El mensaje es obligatorio y debe tener menos de 300 caracteres.');
-        return false;
+    if (message.length < 20) {
+        document.getElementById('message-error').textContent = 'El mensaje debe tener al menos 20 caracteres.';
+        isValid = false;
+    } else if (message.length > 300) {
+        document.getElementById('message-error').textContent = 'El mensaje no puede exceder los 300 caracteres.';
+        isValid = false;
+    }
+
+    if (isValid) {
+        showSubmittedData(name, email, phone, message);
+        document.getElementById('contact-form').reset();
     }
 
     showSubmittedData(name, email, phone, message);
-
-    document.getElementById('contact-form').reset();
-
     return false; 
 }
-
 function showSubmittedData(name, email, phone, message) {
     const submittedDataDiv = document.getElementById('submitted-data');
     
