@@ -1,6 +1,6 @@
 const imagenesCarrusel = [
-    "images/dogis.png",
-    "images/perritoo.png",
+    "images/perri.png",
+    "images/bebes.png",
     "images/oferta.png"
 ];
 
@@ -46,7 +46,7 @@ function moverCarrusel(direction) {
 
 
 document.addEventListener("DOMContentLoaded", () => {
-    inicializarCarrusel();  // Inicializar el carrusel
-    mostrarImagen(currentIndex);  // Mostrar la imagen inicial
+    inicializarCarrusel();  
+    mostrarImagen(currentIndex);  
 });
 
