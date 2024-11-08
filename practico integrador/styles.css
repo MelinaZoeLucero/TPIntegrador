@@ -204,12 +204,14 @@ margin-top: 20px;
 }
 
 .carrusel-imagenes .carrusel-imagen {
-    display: none; /* Oculta todas las imágenes por defecto */
-    width: 100%;
+    display: none; 
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .carrusel-imagenes .carrusel-imagen.active {
-    display: block; /* Solo la imagen activa será visible */
+    display: block; 
 }
 
 
